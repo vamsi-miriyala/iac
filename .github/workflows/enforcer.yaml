@@ -7,8 +7,18 @@ jobs:
   check_branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Check branch
-        if: github.base_ref == 'main' && (github.head_ref != 'dev' && !startsWith(github.head_ref, 'feature/'))
+      - name: Check branch Main
+        if: github.base_ref == 'main' && (github.head_ref != 'stage')
         run: |
-          echo "ERROR: You can only merge to main from dev & feature"
+          echo "ERROR: You can only merge to main from stage"
+          exit 1
+      - name: Check branch QA
+        if: github.base_ref == 'qa' && (github.head_ref != 'feature' && !startsWith(github.head_ref, 'fix/'))
+        run: |
+          echo "ERROR: You can only merge to main from feature & fix branch"
+          exit 1
+      - name: Check branch Stage
+        if: github.base_ref == 'stage' && (github.head_ref != 'qa' && !startsWith(github.head_ref, 'hotfix/'))
+        run: |
+          echo "ERROR: You can only merge to stage from qa & hotfix branch"
           exit 1
