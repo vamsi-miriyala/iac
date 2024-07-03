@@ -18,4 +18,4 @@ jobs:
         with:
           source: 'dev'
           target: 'master'
-          token: 'ghp'
+          github_token: 'ghp'
