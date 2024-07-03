@@ -18,3 +18,4 @@ jobs:
         with:
           source: 'dev'
           target: 'master'
+          token: 'ghp'
