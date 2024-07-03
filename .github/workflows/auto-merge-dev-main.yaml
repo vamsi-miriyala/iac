@@ -18,4 +18,4 @@ jobs:
         with:
           source: 'dev'
           target: 'master'
-          github_token: 'ghp'
+          github_token: ${{ secrets.GHP }}
